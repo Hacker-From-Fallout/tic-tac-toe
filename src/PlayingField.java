@@ -12,19 +12,13 @@ public class PlayingField {
         System.out.println("-------------");
     }
 
-    public String get(int index) {
-        return field[index];
-    }
-
     public boolean set(int index, String value) {
-        while (true) {
-            if (!field[index - 1].equals("X") && !field[index - 1].equals("O")) {
-                field[index - 1] = value;
-                return true;
-            } else {
-                System.out.println("Данная позиция уже занята.");
-                return false;
-            }
+        if (!field[index - 1].equals("X") && !field[index - 1].equals("0")) {
+            field[index - 1] = value;
+            return true;
+        } else {
+            System.out.println("Данная позиция уже занята.");
+            return false;
         }
     }
 
@@ -48,15 +42,15 @@ public class PlayingField {
             if (pos1.equals(pos2) && pos2.equals(pos3)) {
                 if (pos1.equals("X")) {
                     return "Победил X!";
-                } else if (pos1.equals("O")) {
-                    return "Победил O!";
+                } else if (pos1.equals("0")) {
+                    return "Победил 0!";
                 }
             }
         }
 
         boolean isDraw = true;
         for (String cell : field) {
-            if (!cell.equals("X") && !cell.equals("O")) {
+            if (!cell.equals("X") && !cell.equals("0")) {
                 isDraw = false;
                 break;
             }
@@ -67,14 +61,5 @@ public class PlayingField {
         }
 
         return null;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true; // если это один и тот же объект
-        } else {
-            return false;
-        }
     }
 }
